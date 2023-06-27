@@ -3,6 +3,8 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPhoneNumber } from './redux/actions';
+import { setPhoneNumber } from './action.js';
+
 
 const styles = StyleSheet.create({
   container: {

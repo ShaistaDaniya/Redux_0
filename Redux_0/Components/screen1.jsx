@@ -1,6 +1,9 @@
 import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setPhoneNumber } from './action.js';
 import { useNavigation } from '@react-navigation/native';
+
 
 const styles = StyleSheet.create({
   container: {
