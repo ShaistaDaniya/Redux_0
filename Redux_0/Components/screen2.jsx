@@ -1,7 +1,7 @@
+// Screen2.jsx
 import React from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPhoneNumber } from './redux/actions';
 
 const styles = StyleSheet.create({
@@ -87,19 +87,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const Screen2 = () => {
+const Screen2 = ({ navigation }) => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
+  const phoneNumber = useSelector((state) => state.phoneNumber);
 
   const handleTap = () => {
     console.log('Tapped');
   };
 
-  const handleNextButton = (phoneNumber) => {
+  const handleNextButton = () => {
     if (phoneNumber.length === 10) {
-      dispatch(setPhoneNumber(phoneNumber)); // Dispatch the action to store phone number in Redux state
       navigation.navigate('Screen3');
     }
+  };
+
+  const handlePhoneNumberChange = (number) => {
+    dispatch(setPhoneNumber(number)); // Dispatch the action to store the phone number in Redux state
   };
 
   return (
@@ -109,23 +112,19 @@ const Screen2 = () => {
           style={styles.logo}
           source={require('./FINAL-GAT-LOGO-DARK-1.webp')}
         />
-        <PhoneNumberInput onNextButton={handleNextButton} />
+        <PhoneNumberInput
+          phoneNumber={phoneNumber}
+          onPhoneNumberChange={handlePhoneNumberChange}
+          onNextButton={handleNextButton}
+        />
       </View>
     </TouchableOpacity>
   );
 };
 
-const PhoneNumberInput = ({ onNextButton }) => {
-  const dispatch = useDispatch();
-  const [phoneNumber, setPhoneNumber] = React.useState('');
-
+const PhoneNumberInput = ({ phoneNumber, onPhoneNumberChange, onNextButton }) => {
   const handleNextButton = () => {
-    onNextButton(phoneNumber);
-  };
-
-  const handlePhoneNumberChange = (number) => {
-    setPhoneNumber(number);
-    dispatch(setPhoneNumber(number)); // Dispatch the action to store phone number in Redux state
+    onNextButton();
   };
 
   return (
@@ -138,7 +137,7 @@ const PhoneNumberInput = ({ onNextButton }) => {
         style={styles.num}
         keyboardType="numeric"
         placeholder="Enter Phone Number"
-        onChangeText={handlePhoneNumberChange}
+        onChangeText={onPhoneNumberChange}
         value={phoneNumber}
       />
       <TouchableOpacity
