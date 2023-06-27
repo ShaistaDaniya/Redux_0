@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,27 +9,12 @@ import Screen1 from './Screen1.jsx';
 import Screen2 from './screen2.jsx';
 import Screen3 from './screen3.jsx';
 import Screen4 from './screen4.jsx';
+import reducer from './reducer';
+import { setPhoneNumber } from './action.js';
 
 const Stack = createNativeStackNavigator();
 
-// Redux Reducer
-const initialState = {
-  phoneNumber: '',
-};
 
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case 'SET_PHONE_NUMBER':
-      return {
-        ...state,
-        phoneNumber: action.payload,
-      };
-    default:
-      return state;
-  }
-}
-
-// Redux Store
 const store = createStore(reducer);
 
 const App = () => {
