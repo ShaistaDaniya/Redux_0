@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPhoneNumber } from './redux/actions';
-import { setPhoneNumber } from './action.js';
+import { setPhoneNumber } from './action';
+
 
 
 const styles = StyleSheet.create({
@@ -111,7 +111,7 @@ const Screen2 = ({ navigation }) => {
       <View style={styles.container}>
         <Image
           style={styles.logo}
-          source={require('./FINAL-GAT-LOGO-DARK-1.webp')}
+          source={require('./FINAL-GAT-LOGO-DARK-1-webp-5000×1429-.png')}
         />
         <PhoneNumberInput
           phoneNumber={phoneNumber}

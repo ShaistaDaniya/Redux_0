@@ -132,7 +132,7 @@ const Screen4 = ({ navigation }) => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require('./FINAL-GAT-LOGO-DARK-1.webp')}
+        source={require('./FINAL-GAT-LOGO-DARK-1-webp-5000×1429-.png')}
       />
       <Text style={styles.enter}>Enter the passcode</Text>
       <View style={styles.passcodeContainer}>

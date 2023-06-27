@@ -26,7 +26,7 @@ const FIRSTImage = () => {
       <TouchableOpacity onPress={handlePress}>
         <Image
           style={styles.logo}
-          source={require('./FINAL-GAT-LOGO-DARK-1.webp')}
+          source={require('./FINAL-GAT-LOGO-DARK-1-webp-5000×1429-.png')}
         />
       </TouchableOpacity>
     </View>
