@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Text, View, ActivityIndicator, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { setScreen } from './action'; // Assuming you have set up the actions
 
 const styles = StyleSheet.create({
   container: {
@@ -14,11 +15,12 @@ const styles = StyleSheet.create({
 });
 
 const Screen3 = () => {
-  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const currentScreen = useSelector((state) => state.currentScreen);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Screen4');
+      dispatch(setScreen('Screen4')); // Dispatch the action to update the current screen
     }, 2000);
 
     return () => clearTimeout(timer);

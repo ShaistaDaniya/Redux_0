@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Screen1 from './screen1.jsx';
@@ -8,50 +6,62 @@ import Screen2 from './screen2.jsx';
 import Screen3 from './screen3.jsx';
 import Screen4 from './screen4.jsx';
 import reducer from './reducer.js';
+import { useDispatch, useSelector } from 'react-redux';
 
+const initialState = {
+  currentScreen: 'Screen1', // Initial screen
+};
 
-const Stack = createNativeStackNavigator();
+const SET_SCREEN = 'SET_SCREEN';
 
+// Action creator for setting the current screen
+const setScreen = (screenName) => ({
+  type: SET_SCREEN,
+  payload: screenName,
+});
 
-const store = createStore(reducer);
+// Reducer to handle the screen state
+const screenReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_SCREEN:
+      return {
+        ...state,
+        currentScreen: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+const store = createStore(screenReducer);
 
 const App = () => {
-  return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Screen1">
-          <Stack.Screen
-            name="Screen1"
-            component={Screen1}
-            options={{
-              title: 'Screen 1',
-            }}
-          />
-          <Stack.Screen
-            name="Screen2"
-            component={Screen2}
-            options={{
-              title: 'Screen 2',
-            }}
-          />
-          <Stack.Screen
-            name="Screen3"
-            component={Screen3}
-            options={{
-              title: 'Screen 3',
-            }}
-          />
-          <Stack.Screen
-            name="Screen4"
-            component={Screen4}
-            options={{
-              title: 'Screen 4',
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
-  );
+  const currentScreen = useSelector((state) => state.currentScreen);
+  const dispatch = useDispatch();
+
+  const navigate = (screenName) => {
+    dispatch(setScreen(screenName));
+  };
+
+  let screenComponent;
+  switch (currentScreen) {
+    case 'Screen1':
+      screenComponent = <Screen1 navigate={navigate} />;
+      break;
+    case 'Screen2':
+      screenComponent = <Screen2 navigate={navigate} />;
+      break;
+    case 'Screen3':
+      screenComponent = <Screen3 navigate={navigate} />;
+      break;
+    case 'Screen4':
+      screenComponent = <Screen4 navigate={navigate} />;
+      break;
+    default:
+      screenComponent = <Screen1 navigate={navigate} />;
+  }
+
+  return <Provider store={store}>{screenComponent}</Provider>;
 };
 
 export default App;

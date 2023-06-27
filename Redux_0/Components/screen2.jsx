@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPhoneNumber } from './action';
-
-
+import { setPhoneNumber, setScreen } from './action'; // Assuming you have set up the actions
 
 const styles = StyleSheet.create({
   container: {
@@ -88,7 +86,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Screen2 = ({ navigation }) => {
+
+const Screen2 = () => {
   const dispatch = useDispatch();
   const phoneNumber = useSelector((state) => state.phoneNumber);
 
@@ -98,7 +97,7 @@ const Screen2 = ({ navigation }) => {
 
   const handleNextButton = () => {
     if (phoneNumber.length === 10) {
-      navigation.navigate('Screen3');
+      dispatch(setScreen('Screen3')); // Dispatch the action to update the current screen
     }
   };
 

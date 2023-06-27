@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setScreen } from './reducer.js'; // Assuming you have set up the reducer and action
 
 const styles = StyleSheet.create({
   container: {
@@ -15,10 +16,10 @@ const styles = StyleSheet.create({
 });
 
 const FIRSTImage = () => {
-  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handlePress = () => {
-    navigation.navigate('Screen2');
+    dispatch(setScreen('Screen2')); // Dispatch the action to update the current screen
   };
 
   return (
