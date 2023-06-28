@@ -1,9 +1,17 @@
-/**
- * @format
- */
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './Components/reducer'; // Replace with your root reducer
+import App from './App'; // Replace with your main application component
 
-import {AppRegistry} from 'react-native';
-import App from './Components/App';
-import {name as appName} from './app.json';
+const store = createStore(rootReducer); // Create your Redux store with the root reducer
 
-AppRegistry.registerComponent(appName, () => App);
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default Root;
