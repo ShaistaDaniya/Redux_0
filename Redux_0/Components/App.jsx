@@ -28,7 +28,7 @@ const App = () => {
       screenComponent = <Screen1 />;
   }
 
-  return <>{screenComponent}</>;
+  return ()=>{screenComponent};
 };
 
 export default App;
