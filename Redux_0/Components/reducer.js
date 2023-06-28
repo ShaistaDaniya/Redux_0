@@ -1,5 +1,6 @@
 const initialState = {
   phoneNumber: '',
+  currentScreen: 'Screen1',
 };
 
 const reducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         phoneNumber: action.payload,
+      };
+    case 'SET_SCREEN':
+      return {
+        ...state,
+        currentScreen: action.payload,
       };
     default:
       return state;
