@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { setScreen } from './reducer.js'; // Assuming you have set up the reducer and action
+import { setScreen } from './reducer.js'; 
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,7 @@ const FIRSTImage = () => {
   const dispatch = useDispatch();
 
   const handlePress = () => {
-    dispatch(setScreen('Screen2')); // Dispatch the action to update the current screen
+    dispatch(setScreen('Screen2')); 
   };
 
   return (

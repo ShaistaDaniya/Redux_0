@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Text, View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { setScreen } from './action'; // Assuming you have set up the actions
+import { setScreen } from './action'; 
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ const Screen3 = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      dispatch(setScreen('Screen4')); // Dispatch the action to update the current screen
+      dispatch(setScreen('Screen4'));
     }, 2000);
 
     return () => clearTimeout(timer);

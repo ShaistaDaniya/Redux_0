@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPhoneNumber, setScreen } from './action'; // Assuming you have set up the actions
+import { setPhoneNumber, setScreen } from './action';
 
 const styles = StyleSheet.create({
   container: {
@@ -97,12 +97,12 @@ const Screen2 = () => {
 
   const handleNextButton = () => {
     if (phoneNumber.length === 10) {
-      dispatch(setScreen('Screen3')); // Dispatch the action to update the current screen
+      dispatch(setScreen('Screen3')); 
     }
   };
 
   const handlePhoneNumberChange = (number) => {
-    dispatch(setPhoneNumber(number)); // Dispatch the action to store the phone number in Redux state
+    dispatch(setPhoneNumber(number)); 
   };
 
   return (

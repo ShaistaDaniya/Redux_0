@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { setScreen } from './action'; // Assuming you have set up the actions
+import { setScreen } from './action';
 
 const styles = StyleSheet.create({
   container: {
@@ -119,10 +119,10 @@ const Screen4 = () => {
   };
 
   const handleVerifyPasscode = () => {
-    const correctPasscode = '1234'; // Replace with your own passcode
+    const correctPasscode = '1234'; 
     if (passcode.join('') === correctPasscode) {
       console.log('Passcode is correct. Updating screen using Redux...');
-      dispatch(setScreen('Screen5')); // Dispatch the action to update the current screen
+      dispatch(setScreen('Screen5')); 
     } else {
       setPasscodeError(true);
       setPasscode(['', '', '', '']);
